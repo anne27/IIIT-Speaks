@@ -1,0 +1,170 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>welcome | {{ user }}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="{%static 'js/skel.min.js' %}"></script>
+		<script src="{%static 'js/skel-panels.min.js' %}"></script>
+		<script src="{%static 'js/init.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/skel-noscript.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style-desktop.css' %}" />
+	</head>
+<!-- /*	<style>
+			#header{
+				background-image: url({%static 'images/feed.jpg' %});
+			}
+			#tweet{
+				background-image: url({%static 'images/feed.jpg' %});
+			}
+	</style>*/ -->
+	<body>
+
+	<!-- Header -->
+		<div id="header">
+			<div id="nav-wrapper"> 
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="active"><a href={% url 'home' %}><div class="IIITD"><span style="color:#ffffff; font:0.95em bold; font-family:helvetica, sans-serif"> IIIT</span><span style="color:#3faea8; font:0.95em bold; font-family:helvetica, sans-serif">D</span><span style="font:0.95em bold; font-family:helvetica, sans-serif"> Speaks </span></div></a></li>
+						{% if user.is_authenticated %}
+							<li><a href={% url 'myfeed' %}>MY FEED</a></li>
+							<li><a>{{ user }}</a></li>
+							<li><a href={% url 'logout' %} class="button big special">Logout</a></li>
+						{% else %}
+							<li><a href="/signup" class="button big special">Sign Up</a></li>
+							<li><a href="/login" class="button big special">Sign in</a></li>
+						{% endif %}
+
+					</ul>
+				</nav>
+			</div>
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<div class="IIITD"><a href="http://www.iiitd.ac.in/"><span style="color:#ffffff; font:1em bold; font-family:helvetica, sans-serif"> IIIT</span><span style="color:#3faea8; font:1em bold; font-family:helvetica, sans-serif">D</span><span style="font:1em bold; font-family:helvetica, sans-serif"> Speaks </span></a></div>
+					</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Header --> 
+
+	<!-- Main -->
+		<div id="main">
+			<div class="container">
+				<div class="row">
+
+					<!-- Content -->
+					<div id="content" class="8u skel-cell-important">
+							<header>
+								{% if user.is_authenticated %}
+								<h2>Welcome {{ user }}</h2>
+								{% else %}
+								<h2> Welcome </h2>
+								{% endif %}
+								<br />
+								<span class="byline">ALL POSTS</span>
+							</header>
+							{% for i in listBlogs %}
+							{% if i.Publish %}
+							<div class="actualcontent" style="margin:7em auto; border:2px solid #999999; border-radius:10px; padding-left:20px; padding-right:20px;">
+								<div style="text-align:center;color:#000000; font:40px bold Helvetica;"><h1 style="color:#000000; padding-top:4px;">{{ i.BlogTitle }}</h1></div>
+								<br />
+								<h2 style="color:#000000; font:30px bold Helvetica;">{{ i.BlogDescription }}</h2>
+								<br />
+								<div style="color:#777777; font:20px bold Helvetica;float:right;">| by {{ i.Author }}</div><br /><br />
+								<p style="color:#000000; font:20px bold Helvetica;">{{ i.Content }}</p>
+								<div style="float:right;"><p style="color:#777777; font:15px bold Helvetica;">{{ i.Created }}</p></div>
+								<br />
+								<br /> 
+							</div>
+							{% endif %}
+							{% endfor %}
+					</div>
+
+					<!-- Sidebar -->
+					<div id="sidebar" class="4u">
+				<!-- 		<section>
+							<header>
+								<h2>Most Viewed</h2>
+							</header>
+							<div class="row">
+								<section class="6u">
+									<ul class="default">
+										<li><a href="#">Divyanshu Talwar</a></li>
+										<li><a href="#">Mrinal Abrol</a></li>
+										<li><a href="#">Lamha </a></li>
+										<li><a href="#">Annanya</a></li>
+										<li><a href="#">person 1</a></li>
+									</ul>
+								</section>
+								<section class="6u">
+									<ul class="default">
+										<li><a href="#">person 1</a></li>
+										<li><a href="#">person 1</a></li>
+										<li><a href="#">person 1</a></li>
+										<li><a href="#">person 1</a></li>
+										<li><a href="#">person 1</a></li>
+									</ul>
+								</section>
+							</div>
+						</section>
+						<section>
+							<header>
+								<h2>Hot Topics</h2>
+							</header>
+							<ul class="style">
+								<li>
+									<p class="posted">May 21, 2014  |  (10 )  Comments</p>
+									<p><a href="#">Journey of a thousand miles begins with the first step...</a></p>
+								</li>
+								<li>
+									<p class="posted">May 18, 2014  |  (10 )  Comments</p>
+									<p><a href="#">...........................................</a></p>
+								</li>
+							</ul>
+						</section> -->
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	<!-- /Main -->
+
+	<!-- Tweet -->
+		<div id="tweet">
+			<div class="container">
+				<section>
+					<blockquote>&ldquo;Dedicate yourself and you will find yourself sitting in the hall of fame.&rdquo;</blockquote>
+				</section>
+			</div>
+		</div>
+	<!-- /Tweet -->
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<section>
+					<header>
+						<h2>Get in touch</h2>
+						<span class="byline">A project in development</span>
+					</header>
+					<ul class="contact">
+						<li><a href="http://www.twitter.com" class="fa fa-twitter"><span>Twitter</span></a></li>
+						<li class="active"><a href="http://www.facebook.com" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<!-- <li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li> -->
+						<li><a href="http://www.tumblr.com" class="fa fa-tumblr"><span>Google+</span></a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	<!-- /Footer -->
+	</body>
+</html>

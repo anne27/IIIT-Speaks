@@ -1,0 +1,122 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>IIITD Speaks</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="{%static 'js/skel.min.js' %}"></script>
+		<script src="{%static 'js/skel-panels.min.js' %}"></script>
+		<script src="{%static 'js/init.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/skel-noscript.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/style-desktop.css' %}" />
+	</head>
+	<body class="homepage">
+
+	<!-- Header -->
+
+		<div id="header">
+			<div id="nav-wrapper"> 
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="active"><a href="first_page.html"><div class="IIITD"><span style="color:#ffffff; font:0.95em bold; font-family:helvetica, sans-serif"> IIIT</span><span style="color:#3faea8; font:0.95em bold; font-family:helvetica, sans-serif">D</span><span style="font:0.95em bold; font-family:helvetica, sans-serif"> Speaks </span></div></a></li>
+						<li><a href={% url 'rssfeed' %}>ALL POSTS</a></li>
+						<!-- <li><a href="most-viewed.html">Most viewed</a></li>
+						<li><a href="hot-topics.html">Hot topics</a></li> -->
+						<!-- <li><a href="feed.html">Feed</a></li> -->
+						{% if user.is_authenticated %}
+							<li><a href={% url 'myfeed' %}>MY FEED</a></li>
+							<li><a>{{ user }}</a></li>
+							<li><a href={% url 'logout' %} class="button big special">Logout</a></li>
+						{% else %}
+							<li><a href="/signup" class="button big special">Sign Up</a></li>
+							<li><a href="/login" class="button big special">Sign in</a></li>
+						{% endif %}
+
+					</ul>
+				</nav>
+			</div>
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1>
+					<div class="IIITD"><a href="http://www.iiitd.ac.in/"><span style="color:#ffffff; font:1em bold; font-family:helvetica, sans-serif"> IIIT</span><span style="color:#3faea8; font:1em bold; font-family:helvetica, sans-serif">D</span><span style="font:1em bold; font-family:helvetica, sans-serif"> Speaks </span></a></div>
+					</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- Featured -->
+		<div id="featured">
+			<div class="container">
+				<header>
+					<h2>Welcome to IIITD Speaks</h2>
+				</header>
+
+				<p>Welcome to <strong>IIITD Speaks</strong>, a portal to express yourself and your feelings.
+				<br /> So <strong>SignUp</strong> and start posting</p>
+				<hr />
+				<!-- <header>
+					<h2>Top Trending</h2>
+				</header> -->
+				<!-- <div class="row">
+					<section class="4u">
+						<span class="pennant"><span class="fa fa-briefcase"></span></span>
+						<h3>Startups</h3>
+						<p>.......................................................................</p>
+						<a href="#" class="button button-style1">Read More</a>
+					</section>
+					<section class="4u">
+						<span class="pennant"><span class="fa fa-lock"></span></span>
+						<h3>Entertainment !!!(Feeling Locked)</h3>
+						<p>........................................................................</p>
+						<a href="#" class="button button-style1">Read More</a>
+					</section>
+					<section class="4u">
+						<span class="pennant"><span class="fa fa-globe"></span></span>
+						<h3>Discuss whats trending</h3>
+						<p>........................................................................</p>
+						<a href="#" class="button button-style1">Read More</a>
+					</section>
+
+				</div> -->
+			</div>
+		</div>
+
+	
+
+	<!-- Tweet -->
+		<div id="tweet">
+			<div class="container">
+				<section>
+					<blockquote>&ldquo;You could be a master don't wait for luck!&rdquo;</blockquote>
+				</section>
+			</div>
+		</div>
+
+	<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<section>
+					<header>
+						<h2>Get in touch</h2>
+						<span class="byline">A project in development</span>
+					</header>
+					<ul class="contact">
+						<li><a href="http://www.twitter.com" class="fa fa-twitter"><span>Twitter</span></a></li>
+						<li class="active"><a href="http://www.facebook.com" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<!-- <li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li> -->
+						<li><a href="http://www.tumblr.com" class="fa fa-tumblr"><span>Google+</span></a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	</body>
+</html>
